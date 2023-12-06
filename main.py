@@ -33,6 +33,44 @@ from model import CategoricalGraphAtt, MRR, Precision, Acc
 #     return dataloader
 
 def train():
+    # load data
+    data_path = './output/sp500_data.pkl'
+    with open(data_path, "rb") as f:
+        data = pickle.load(f)
+
+    inner_edge = np.array(np.load("/openbayes/input/input0/inner_edge.npy"))
+    outer_edge = np.array(np.load("/openbayes/input/input0/outer_edge.npy"))
+
+    time_step = data["train"]["x1"][:, :, :, 1:].shape[-2]
+    input_dim = data["train"]["x1"][:, :, :, 1:].shape[-1]
+    num_weeks = data["train"]["x1"][:, :, :, 1:].shape[0]
+    train_size = int(num_weeks * 0.2)
+    device = 'cuda'
+    agg_week_num = 3
+
+    # convert data into torch dtype
+    train_w1 = torch.Tensor(data["train"]["x1"][:, :, :, 1:]).float().to(device)
+    train_w2 = torch.Tensor(data["train"]["x2"][:, :, :, 1:]).float().to(device)
+    train_w3 = torch.Tensor(data["train"]["x3"][:, :, :, 1:]).float().to(device)
+
+    inner_edge = torch.tensor(inner_edge.T, dtype=torch.int64).to(device)
+    outer_edge = torch.tensor(outer_edge.T, dtype=torch.int64).to(device)
+
+    # test data
+    test_w1 = torch.Tensor(data["test"]["x1"][:, :, :, 1:]).float().to(device)
+    test_w2 = torch.Tensor(data["test"]["x2"][:, :, :, 1:]).float().to(device)
+    test_w3 = torch.Tensor(data["test"]["x3"][:, :, :, 1:]).float().to(device)
+    test_data = [test_w1, test_w2, test_w3]  # [-agg_week_num:]
+
+    # label data
+    train_reg = torch.Tensor(data["train"]["y_return ratio"]).float()
+    train_cls = torch.Tensor(data["train"]["y_up_or_down"]).float()
+    test_y = data["test"]["y_return ratio"]
+    test_cls = data["test"]["y_up_or_down"]
+    test_shape = test_y.shape[0]
+    loop_number = 100
+    ks_list = [5, 10, 20]
+
     global test_y
     l2 = 0.1
     lr = 0.1
@@ -44,8 +82,7 @@ def train():
     hidden_dim = 64
     use_gru = False
 
-    model = CategoricalGraphAtt(input_dim, time_step, hidden_dim, inner_edge, outer_edge, agg_week_num, use_gru,
-                                device).to(device)
+    model = CategoricalGraphAtt(input_dim, time_step, hidden_dim, inner_edge, outer_edge, agg_week_num, use_gru,device).to(device)
 
     # initialize parameters
     for p in model.parameters():
@@ -71,15 +108,14 @@ def train():
     c_loss = torch.tensor([]).float().to(device)
     ra_loss = torch.tensor([]).float().to(device)
     for epoch in range(epochs):
-        for week in range(2):
+        for week in range(num_weeks):
             model.train()  # prep to train model
-            batch_x1, batch_x2, batch_x3, batch_x4 = (
+            batch_x1, batch_x2, batch_x3 = (
                 train_w1[week].to(device),
                 train_w2[week].to(device),
-                train_w3[week].to(device),
-                train_w4[week].to(device),
+                train_w3[week].to(device)
             )
-            batch_weekly = [batch_x1, batch_x2, batch_x3, batch_x4][-3:]
+            batch_weekly = [batch_x1, batch_x2, batch_x3]
             batch_reg_y = train_reg[week].view(-1, 1).to(device)
             batch_cls_y = train_cls[week].view(-1, 1).to(device)
             reg_out, cls_out = model(batch_weekly)
@@ -105,14 +141,13 @@ def train():
                 r_loss = torch.tensor([]).float().to(device)
                 c_loss = torch.tensor([]).float().to(device)
                 ra_loss = torch.tensor([]).float().to(device)
-                if (week + 1) % 144 == 0:
-                    print("REG Loss:%.4f CLS Loss:%.4f RANK Loss:%.4f  Loss:%.4f" % (
-                    reg_loss.item(), cls_loss.item(), rank_loss.item(), loss.item()))
+                if (week + 1) % 20 == 0:
+                    print(f"epoch {epoch}, week {week} : REG Loss:%.4f CLS Loss:%.4f RANK Loss:%.4f  Loss:%.4f" % (reg_loss.item(), cls_loss.item(), rank_loss.item(), loss.item()))
 
         # evaluate
         model.eval()
         print("Evaluate at epoch %s" % (epoch + 1))
-        y_pred, y_pred_cls = model.predict_toprank([test_w1, test_w2, test_w3, test_w4], device, top_k=5)
+        y_pred, y_pred_cls = model.predict_toprank([test_w1, test_w2, test_w3], device, top_k=5)
 
         # calculate metric
         y_pred = np.array(y_pred).ravel()
@@ -150,52 +185,9 @@ def train():
     return best_metric_IRR, best_metric_MRR, best_results_IRR, best_results_MRR
 
 if __name__ == "__main__":
-
-    # load data
-    data_path = '/openbayes/input/input0/sp500_data.pkl'
-    with open(data_path, "rb") as f:
-        data = pickle.load(f)
-    inner_edge = np.array(np.load("/openbayes/input/input0/inner_edge.npy"))
-    # inner10_edge = np.array(np.load("./edge_10.npy"))
-    # inner20_edge = np.array(np.load("./Taiwan_inner_edge20.npy"))
-    outer_edge = np.array(np.load("/openbayes/input/input0/outer_edge.npy"))
-    time_step = data["train"]["x1"].shape[-2]
-    input_dim = data["train"]["x1"].shape[-1]
-    num_weeks = data["train"]["x1"].shape[0]
-    train_size = int(num_weeks * 0.2)
-    device = 'cuda'
-    agg_week_num = 3
-
-    # convert data into torch dtype
-    train_w1 = torch.Tensor(data["train"]["x1"]).float().to(device)
-    train_w2 = torch.Tensor(data["train"]["x2"]).float().to(device)
-    train_w3 = torch.Tensor(data["train"]["x3"]).float().to(device)
-    train_w4 = torch.Tensor(data["train"]["x4"]).float().to(device)
-    inner_edge = torch.tensor(inner_edge.T, dtype=torch.int64).to(device)
-    # inner10_edge = torch.tensor(inner10_edge.T, dtype=torch.int64).to(device)
-    # inner20_edge = torch.tensor(inner20_edge.T, dtype=torch.int64).to(device)
-    outer_edge = torch.tensor(outer_edge.T, dtype=torch.int64).to(device)
-
-    # test data
-    test_w1 = torch.Tensor(data["test"]["x1"]).float().to(device)
-    test_w2 = torch.Tensor(data["test"]["x2"]).float().to(device)
-    test_w3 = torch.Tensor(data["test"]["x3"]).float().to(device)
-    test_w4 = torch.Tensor(data["test"]["x4"]).float().to(device)
-    test_data = [test_w1, test_w2, test_w3, test_w4]  # [-agg_week_num:]
-
-    # label data
-    train_reg = torch.Tensor(data["train"]["y_return ratio"]).float()
-    train_cls = torch.Tensor(data["train"]["y_up_or_down"]).float()
-    test_y = data["test"]["y_return ratio"]
-    test_cls = data["test"]["y_up_or_down"]
-    test_shape = test_y.shape[0]
-    loop_number = 100
-    ks_list = [5, 10, 20]
-
     best_metric_IRR, best_metric_MRR, best_results_IRR, best_results_MRR = train()
     print("-------Final result-------")
     print("[BEST MRR] MAE:%.4f ACC:%.4f MRR:%.4f Precision:%.4f" % tuple(best_metric_MRR))
     for idx, k in enumerate(ks_list):
-        print("[BEST RESULT MRR with k=%s] MAE:%.4f ACC:%.4f MRR:%.4f Precision:%.4f" % tuple(
-            tuple([k]) + tuple(best_results_MRR[idx])))
+        print("[BEST RESULT MRR with k=%s] MAE:%.4f ACC:%.4f MRR:%.4f Precision:%.4f" % tuple(tuple([k]) + tuple(best_results_MRR[idx])))
 

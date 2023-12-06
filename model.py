@@ -41,7 +41,7 @@ class SequenceEncoder(nn.Module):
 
 
 class CategoricalGraphAtt(nn.Module):
-    def __init__(self, input_dim, time_step, hidden_dim, inner_edge, outer_edge, input_num, device):
+    def __init__(self, input_dim, time_step, hidden_dim, inner_edge, outer_edge, input_num, use_gru, device):
         super(CategoricalGraphAtt, self).__init__()
 
         # basic parameters
@@ -51,11 +51,14 @@ class CategoricalGraphAtt(nn.Module):
         self.inner_edge = inner_edge
         self.outer_edge = outer_edge
         self.input_num = input_num
+        self.use_gru = use_gru
         self.device = device
 
         # hidden layers
-        self.pool_attention = AttentionBlock(20, hidden_dim)
-        self.encoder = SequenceEncoder(input_dim, time_step, hidden_dim)
+        # self.pool_attention = AttentionBlock(25,hidden_dim)
+        if self.use_gru:
+            self.weekly_encoder = nn.GRU(hidden_dim, hidden_dim)
+        self.encoder_list = nn.ModuleList([SequenceEncoder(input_dim, time_step, hidden_dim) for _ in range(input_num)])
         self.cat_gat = GATConv(hidden_dim, hidden_dim)
         self.inner_gat = GATConv(hidden_dim, hidden_dim)
         self.weekly_attention = AttentionBlock(input_num, hidden_dim)
@@ -66,31 +69,71 @@ class CategoricalGraphAtt(nn.Module):
         self.cls_layer = nn.Linear(hidden_dim, 1)
 
     def forward(self, weekly_batch):
-        print(f'weekly_batch.size = {weekly_batch.size()}')
         # x has shape (category_num, stocks_num, time_step, dim)
+        # print(f'weekly batch[i] size = {weekly_batch[0].size()}')  # torch.Size([475, 7, 30])
+        weekly_embedding = self.encoder_list[0](weekly_batch[0].view(-1, self.time_step, self.input_dim))
+        # print(f'weekly_embedding size = {weekly_embedding.size()}')    # torch.Size([475, 1, 64])
 
-        weekly_att_vector = self.encoder(weekly_batch.view(-1, self.time_step, self.input_dim))  # (100,1,dim)
-        print(f'weekly_att_vector.size = {weekly_att_vector.size()}')
+        # calculate embeddings for the rest of weeks
+        for week_idx in range(1, self.input_num):
+            weekly_inp = weekly_batch[week_idx]
+            weekly_inp = weekly_inp.view(-1, self.time_step, self.input_dim)
+            week_stock_embedding = self.encoder_list[week_idx](weekly_inp)
+            weekly_embedding = torch.cat((weekly_embedding, week_stock_embedding), dim=1)
+        # print(f'after concat weekly_embedding size = {weekly_embedding.size()}')  # torch.Size([475, 3, 64])
+
+        # merge weeks
+        if self.use_gru:
+            weekly_embedding, _ = self.weekly_encoder(weekly_embedding)
+        weekly_att_vector, _ = self.weekly_attention(weekly_embedding)
+        # print(f'weekly_att_vector size = {weekly_att_vector.size()}')  # torch.Size([475, 64])
 
         # inner graph interaction
         inner_graph_embedding = self.inner_gat(weekly_att_vector, self.inner_edge)
-        inner_graph_embedding = inner_graph_embedding.view(5, 20, -1)
+        # print(f'inner_graph_embedding size = {inner_graph_embedding.size()}')  # torch.Size([475, 64])
 
         # pooling
-        weekly_att_vector = weekly_att_vector.view(5, 20, -1)
-        category_vectors, _ = self.pool_attention(weekly_att_vector)  # torch.max(weekly_att_vector,dim=1)
+        start_index = 0
+        category_vectors_list = []
+        for i in range(len(len_array)):
+            end_index = start_index + len_array[i]
+            sector_graph_embedding = inner_graph_embedding[start_index:end_index, :].unsqueeze(0)
+            pool_attention = AttentionBlock(len_array[i], self.dim).to(device)
+            category_vectors, _ = pool_attention(sector_graph_embedding)  # ([1, 64])
+            category_vectors_list.append(category_vectors)
+            start_index = end_index
+
+        category_vectors = torch.cat(category_vectors_list, dim=0)  # torch.max(weekly_att_vector,dim=1)
+        # print(f'category_vectors size = {category_vectors.size()}')  # torch.Size([19, 64])
 
         # use category graph attention
         category_vectors = self.cat_gat(category_vectors, self.outer_edge)  # (5,dim)
-        category_vectors = category_vectors.unsqueeze(1).expand(-1, 20, -1)
+        # print(f'after sector gat category_vectors size = {category_vectors.size()}')  # torch.Size([19, 64])
+
+        intra_graph_embedding_list = []
+        for i in range(category_vectors.size()[0]):
+            gat_category_vectors = category_vectors[i:i + 1, :]
+            for j in range(len_array[i]):
+                intra_graph_embedding_list.append(gat_category_vectors)
+        intra_graph_embedding = torch.cat(intra_graph_embedding_list, dim=0)
+        # print(f'intra_graph_embedding size = {intra_graph_embedding.size()}')   # torch.Size([475, 64])
 
         # fusion
-        fusion_vec = torch.cat((weekly_att_vector, category_vectors, inner_graph_embedding), dim=-1)
-        fusion_vec = torch.relu(self.fusion(fusion_vec))
+        fusion_vec = torch.cat((weekly_att_vector, inner_graph_embedding, intra_graph_embedding), dim=-1)
+        # print(f'cat fusion_vec size = {fusion_vec.size()}')  # torch.Size([475, 192])
+
+        fusion_vec = self.fusion(fusion_vec)
+        # print(f'linear fusion_vec size = {fusion_vec.size()}')  # torch.Size([475, 64])
+
+        fusion_vec = torch.relu(fusion_vec)
+        # print(f'relu fusion_vec size = {fusion_vec.size()}')  # torch.Size([475, 64])
 
         # output
         reg_output = self.reg_layer(fusion_vec)
+        # print(f'reg_output size = {reg_output.size()}')  # torch.Size([475, 1])
         reg_output = torch.flatten(reg_output)
+        # print(f'flatten reg_output size = {reg_output.size()}')  # torch.Size([475])
+
         cls_output = torch.sigmoid(self.cls_layer(fusion_vec))
         cls_output = torch.flatten(cls_output)
 
@@ -98,13 +141,12 @@ class CategoricalGraphAtt(nn.Module):
 
     def predict_toprank(self, test_data, device, top_k=5):
         y_pred_all_reg, y_pred_all_cls = [], []
-        test_w1, test_w2, test_w3, test_w4 = test_data
+        test_w1, test_w2, test_w3 = test_data
         for idx, _ in enumerate(test_w2):
-            batch_x1, batch_x2, batch_x3, batch_x4 = test_w1[idx].to(self.device), \
-                                                     test_w2[idx].to(self.device), \
-                                                     test_w3[idx].to(self.device), \
-                                                     test_w4[idx].to(self.device)
-            batch_weekly = [batch_x1, batch_x2, batch_x3, batch_x4][-self.input_num:]
+            batch_x1, batch_x2, batch_x3 = test_w1[idx].to(self.device), \
+                test_w2[idx].to(self.device), \
+                test_w3[idx].to(self.device)
+            batch_weekly = [batch_x1, batch_x2, batch_x3]
             pred_reg, pred_cls = self.forward(batch_weekly)
             pred_reg, pred_cls = pred_reg.cpu().detach().numpy(), pred_cls.cpu().detach().numpy()
             y_pred_all_reg.extend(pred_reg.tolist())
