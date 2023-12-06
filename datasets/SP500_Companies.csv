@@ -1,0 +1,481 @@
+Symbol,Name,Sector
+LVS,Las Vegas Sands Corp.,Consumer Services
+NWS,News Corporation,Consumer Services
+NWSA,News Corporation,Consumer Services
+LYV,"Live Nation Entertainment, Inc.",Consumer Services
+DIS,Walt Disney Company (The),Consumer Services
+ROL,"Rollins, Inc.",Consumer Services
+CMG,"Chipotle Mexican Grill, Inc.",Consumer Services
+MGM,MGM Resorts International,Consumer Services
+CTAS,Cintas Corporation,Consumer Services
+HLT,Hilton Worldwide Holdings Inc.,Consumer Services
+SBUX,Starbucks Corporation,Consumer Services
+CMCSA,Comcast Corporation,Consumer Services
+DPZ,Domino¡¯s Pizza Inc,Consumer Services
+BKNG,Booking Holdings Inc. Common Stock,Consumer Services
+YUM,"Yum! Brands, Inc.",Consumer Services
+MCD,McDonald¡¯s Corporation,Consumer Services
+MAR,Marriott International,Consumer Services
+DRI,"Darden Restaurants, Inc.",Consumer Services
+EXPE,"Expedia Group, Inc.",Consumer Services
+CZR,"Caesars Entertainment, Inc.",Consumer Services
+CHTR,"Charter Communications, Inc.",Consumer Services
+WBD,"Warner Bros. Discovery, Inc. ¨C Series A",Consumer Services
+RCL,Royal Caribbean Cruises Ltd.,Consumer Services
+CCL,Carnival Corporation,Consumer Services
+WYNN,"Wynn Resorts, Limited",Consumer Services
+PARA,Paramount Global,Consumer Services
+NCLH,Norwegian Cruise Line Holdings Ltd.,Consumer Services
+CRM,"Salesforce, Inc.",Technology Services
+PANW,"Palo Alto Networks, Inc.",Technology Services
+TYL,"Tyler Technologies, Inc.",Technology Services
+CSGP,"CoStar Group, Inc.",Technology Services
+NOW,"ServiceNow, Inc.",Technology Services
+VRSK,"Verisk Analytics, Inc.",Technology Services
+CDNS,"Cadence Design Systems, Inc.",Technology Services
+IBM,International Business Machines Corporation,Technology Services
+SNPS,"Synopsys, Inc.",Technology Services
+INTU,Intuit Inc.,Technology Services
+PTC,PTC Inc.,Technology Services
+ADSK,"Autodesk, Inc.",Technology Services
+PAYC,"Paycom Software, Inc.",Technology Services
+FICO,Fair Isaac Corporation,Technology Services
+ANSS,"ANSYS, Inc.",Technology Services
+ADBE,Adobe Inc.,Technology Services
+MSCI,MSCI Inc.,Technology Services
+NFLX,"Netflix, Inc.",Technology Services
+FTNT,"Fortinet, Inc.",Technology Services
+ROP,"Roper Technologies, Inc.",Technology Services
+TRMB,Trimble Inc.,Technology Services
+ORCL,Oracle Corporation,Technology Services
+EA,Electronic Arts Inc.,Technology Services
+AKAM,"Akamai Technologies, Inc.",Technology Services
+BR,"Broadridge Financial Solutions, Inc.",Technology Services
+ATVI,"Activision Blizzard, Inc",Technology Services
+META,"Meta Platforms, Inc.",Technology Services
+FDS,FactSet Research Systems Inc.,Technology Services
+MSFT,Microsoft Corporation,Technology Services
+JKHY,"Jack Henry & Associates, Inc.",Technology Services
+ADP,"Automatic Data Processing, Inc.",Technology Services
+VRSN,"VeriSign, Inc.",Technology Services
+IT,"Gartner, Inc.",Technology Services
+FFIV,"F5, Inc.",Technology Services
+PAYX,"Paychex, Inc.",Technology Services
+MTCH,"Match Group, Inc.",Technology Services
+GOOG,Alphabet Inc.,Technology Services
+ACN,Accenture plc,Technology Services
+GOOGL,Alphabet Inc.,Technology Services
+EPAM,"EPAM Systems, Inc.",Technology Services
+CDW,CDW Corporation,Technology Services
+J,Jacobs Solutions Inc.,Technology Services
+JNPR,"Juniper Networks, Inc.",Technology Services
+CSCO,"Cisco Systems, Inc.",Technology Services
+CTSH,Cognizant Technology Solutions Corporation,Technology Services
+GEN,Gen Digital Inc.,Technology Services
+FIS,"Fidelity National Information Services, Inc.",Technology Services
+TTWO,"Take-Two Interactive Software, Inc.",Technology Services
+DXC,DXC Technology Company,Technology Services
+TAP,Molson Coors Beverage Company,Consumer Non-Durables
+CLX,Clorox Company (The),Consumer Non-Durables
+VFC,VF Corporation,Consumer Non-Durables
+TSN,"Tyson Foods, Inc.",Consumer Non-Durables
+EL,"Estee Lauder Companies, Inc. (The)",Consumer Non-Durables
+CHD,"Church & Dwight Company, Inc.",Consumer Non-Durables
+MNST,Monster Beverage Corporation,Consumer Non-Durables
+BF-B,Brown Forman Inc,Consumer Non-Durables
+CL,Colgate-Palmolive Company,Consumer Non-Durables
+MKC,"McCormick & Company, Incorporated",Consumer Non-Durables
+NKE,"Nike, Inc.",Consumer Non-Durables
+PEP,"PepsiCo, Inc.",Consumer Non-Durables
+KDP,Keurig Dr Pepper Inc.,Consumer Non-Durables
+KMB,Kimberly-Clark Corporation,Consumer Non-Durables
+PG,Procter & Gamble Company (The),Consumer Non-Durables
+KO,Coca-Cola Company (The),Consumer Non-Durables
+HSY,The Hershey Company,Consumer Non-Durables
+K,Kellogg Company,Consumer Non-Durables
+MDLZ,"Mondelez International, Inc.",Consumer Non-Durables
+HRL,Hormel Foods Corporation,Consumer Non-Durables
+CAG,"ConAgra Brands, Inc.",Consumer Non-Durables
+PM,Philip Morris International Inc,Consumer Non-Durables
+CPB,Campbell Soup Company,Consumer Non-Durables
+GIS,"General Mills, Inc.",Consumer Non-Durables
+RL,Ralph Lauren Corporation,Consumer Non-Durables
+MO,"Altria Group, Inc.",Consumer Non-Durables
+STZ,"Constellation Brands, Inc.",Consumer Non-Durables
+IFF,"International Flavors & Fragrances, Inc.",Consumer Non-Durables
+SJM,J.M. Smucker Company (The) New,Consumer Non-Durables
+WELL,Welltower Inc.,Finance
+VTR,"Ventas, Inc.",Finance
+DLR,"Digital Realty Trust, Inc.",Finance
+EQIX,"Equinix, Inc.",Finance
+AMT,American Tower Corporation (REIT),Finance
+CPT,Camden Property Trust,Finance
+SBAC,SBA Communications Corporation,Finance
+PGR,Progressive Corporation (The),Finance
+IRM,Iron Mountain Incorporated (Delaware),Finance
+AJG,Arthur J. Gallagher & Co.,Finance
+O,Realty Income Corporation,Finance
+ICE,Intercontinental Exchange Inc.,Finance
+MKTX,"MarketAxess Holdings, Inc.",Finance
+ARE,"Alexandria Real Estate Equities, Inc.",Finance
+WY,Weyerhaeuser Company,Finance
+PLD,"Prologis, Inc.",Finance
+KIM,Kimco Realty Corporation (HC.),Finance
+CBRE,CBRE Group Inc,Finance
+PRU,"Prudential Financial, Inc.",Finance
+FI,"Fiserv, Inc.",Finance
+EQR,Equity Residential,Finance
+MMC,"Marsh & McLennan Companies, Inc.",Finance
+ESS,"Essex Property Trust, Inc.",Finance
+UDR,"UDR, Inc.",Finance
+REG,Regency Centers Corporation,Finance
+MAA,"Mid-America Apartment Communities, Inc.",Finance
+BRO,"Brown & Brown, Inc.",Finance
+CCI,Crown Castle Inc.,Finance
+AON,Aon plc,Finance
+CME,CME Group Inc.,Finance
+CBOE,"Cboe Global Markets, Inc.",Finance
+MET,"MetLife, Inc.",Finance
+NDAQ,"Nasdaq, Inc.",Finance
+AIZ,"Assurant, Inc.",Finance
+PEAK,"Healthpeak Properties, Inc.",Finance
+EXR,Extra Space Storage Inc,Finance
+FRT,Federal Realty Investment Trust,Finance
+AVB,"AvalonBay Communities, Inc.",Finance
+WTW,Willis Towers Watson Public Limited Company,Finance
+BLK,"BlackRock, Inc.",Finance
+SPG,"Simon Property Group, Inc.",Finance
+SCHW,Charles Schwab Corporation (The),Finance
+TRV,"The Travelers Companies, Inc.",Finance
+BEN,"Franklin Resources, Inc.",Finance
+AXP,American Express Company,Finance
+TROW,"T. Rowe Price Group, Inc.",Finance
+AMP,"Ameriprise Financial, Inc.",Finance
+HST,Host Hotels,Finance
+BXP,"Boston Properties, Inc.",Finance
+MS,Morgan Stanley,Finance
+CB,Chubb Limited,Finance
+GS,"Goldman Sachs Group, Inc. (The)",Finance
+NTRS,Northern Trust Corporation,Finance
+URI,"United Rentals, Inc.",Finance
+WRB,W.R. Berkley Corporation,Finance
+RJF,"Raymond James Financial, Inc.",Finance
+GL,Globe Life Inc.,Finance
+BK,The Bank of New York Mellon Corporation,Finance
+ACGL,Arch Capital Group Ltd.,Finance
+CINF,Cincinnati Financial Corporation,Finance
+PSA,Public Storage,Finance
+PFG,Principal Financial Group Inc,Finance
+L,Loews Corporation,Finance
+EG,"Everest Group, Ltd.",Finance
+HIG,"Hartford Financial Services Group, Inc. (The)",Finance
+IVZ,Invesco Ltd,Finance
+WFC,Wells Fargo & Company,Finance
+USB,U.S. Bancorp,Finance
+AFL,AFLAC Incorporated,Finance
+AIG,"American International Group, Inc. New",Finance
+JPM,JP Morgan Chase & Co.,Finance
+STT,State Street Corporation,Finance
+BRK-B,Berkshire Hathaway Inc. New,Finance
+PNC,"PNC Financial Services Group, Inc. (The)",Finance
+BAC,Bank of America Corporation,Finance
+RF,Regions Financial Corporation,Finance
+COF,Capital One Financial Corporation,Finance
+MTB,M&T Bank Corporation,Finance
+FITB,Fifth Third Bancorp,Finance
+KEY,KeyCorp,Finance
+HBAN,Huntington Bancshares Incorporated,Finance
+C,"Citigroup, Inc.",Finance
+TFC,Truist Financial Corporation,Finance
+DFS,Discover Financial Services,Finance
+CFG,"Citizens Financial Group, Inc.",Finance
+SYF,Synchrony Financial,Finance
+ZION,Zions Bancorporation N.A.,Finance
+CMA,Comerica Incorporated,Finance
+ALL,Allstate Corporation (The),Finance
+LNC,Lincoln National Corporation,Finance
+PODD,Insulet Corporation,Health Technology
+CTLT,"Catalent, Inc.",Health Technology
+STE,STERIS plc (Ireland),Health Technology
+DXCM,"DexCom, Inc.",Health Technology
+MRK,"Merck & Company, Inc.",Health Technology
+ALGN,"Align Technology, Inc.",Health Technology
+LLY,Eli Lilly and Company,Health Technology
+ISRG,"Intuitive Surgical, Inc.",Health Technology
+COO,"The Cooper Companies, Inc.",Health Technology
+WST,"West Pharmaceutical Services, Inc.",Health Technology
+IDXX,"IDEXX Laboratories, Inc.",Health Technology
+ZBH,"Zimmer Biomet Holdings, Inc.",Health Technology
+BDX,"Becton, Dickinson and Company",Health Technology
+TECH,Bio-Techne Corp,Health Technology
+INCY,Incyte Corporation,Health Technology
+SYK,Stryker Corporation,Health Technology
+ZTS,Zoetis Inc.,Health Technology
+HOLX,"Hologic, Inc.",Health Technology
+TMO,Thermo Fisher Scientific Inc,Health Technology
+ABT,Abbott Laboratories,Health Technology
+JNJ,Johnson & Johnson,Health Technology
+EW,Edwards Lifesciences Corporation,Health Technology
+A,"Agilent Technologies, Inc.",Health Technology
+ABBV,AbbVie Inc.,Health Technology
+MTD,"Mettler-Toledo International, Inc.",Health Technology
+DHR,Danaher Corporation,Health Technology
+MDT,Medtronic plc.,Health Technology
+TFX,Teleflex Incorporated,Health Technology
+RMD,ResMed Inc.,Health Technology
+VRTX,Vertex Pharmaceuticals Incorporated,Health Technology
+WAT,Waters Corporation,Health Technology
+REGN,"Regeneron Pharmaceuticals, Inc.",Health Technology
+AMGN,Amgen Inc.,Health Technology
+RVTY,"Revvity, Inc.",Health Technology
+GILD,"Gilead Sciences, Inc.",Health Technology
+BMY,Bristol-Myers Squibb Company,Health Technology
+BIIB,Biogen Inc.,Health Technology
+PFE,"Pfizer, Inc.",Health Technology
+VTRS,Viatris Inc.,Health Technology
+ILMN,"Illumina, Inc.",Health Technology
+WBA,"Walgreens Boots Alliance, Inc.",Health Technology
+BAX,Baxter International Inc.,Health Technology
+BIO,"Bio-Rad Laboratories, Inc.",Health Technology
+XRAY,DENTSPLY SIRONA Inc.,Health Technology
+NVDA,NVIDIA Corporation,Electronic Technology
+AXON,"Axon Enterprise, Inc.",Electronic Technology
+FSLR,"First Solar, Inc.",Electronic Technology
+MPWR,"Monolithic Power Systems, Inc.",Electronic Technology
+TDG,Transdigm Group Inc.,Electronic Technology
+GLW,Corning Incorporated,Electronic Technology
+LHX,"L3Harris Technologies, Inc.",Electronic Technology
+ANET,"Arista Networks, Inc.",Electronic Technology
+ENPH,"Enphase Energy, Inc.",Electronic Technology
+MSI,"Motorola Solutions, Inc.",Electronic Technology
+TER,"Teradyne, Inc.",Electronic Technology
+AAPL,Apple Inc.,Electronic Technology
+APH,Amphenol Corporation,Electronic Technology
+AVGO,Broadcom Inc.,Electronic Technology
+TDY,Teledyne Technologies Incorporated,Electronic Technology
+ADI,"Analog Devices, Inc.",Electronic Technology
+ROK,"Rockwell Automation, Inc.",Electronic Technology
+HON,Honeywell International Inc.,Electronic Technology
+RTX,RTX Corporation,Electronic Technology
+ZBRA,Zebra Technologies Corporation,Electronic Technology
+ON,ON Semiconductor Corporation,Electronic Technology
+KEYS,Keysight Technologies Inc.,Electronic Technology
+TXN,Texas Instruments Incorporated,Electronic Technology
+KLAC,KLA Corporation,Electronic Technology
+TEL,TE Connectivity Ltd. New Switzerland Registered Shares,Electronic Technology
+GRMN,Garmin Ltd.,Electronic Technology
+LDOS,"Leidos Holdings, Inc.",Electronic Technology
+NXPI,NXP Semiconductors NV.,Electronic Technology
+GD,General Dynamics Corporation,Electronic Technology
+MCHP,Microchip Technology Incorporated,Electronic Technology
+TXT,Textron Inc.,Electronic Technology
+HII,"Huntington Ingalls Industries, Inc.",Electronic Technology
+LMT,Lockheed Martin Corporation,Electronic Technology
+SWKS,"Skyworks Solutions, Inc.",Electronic Technology
+QCOM,QUALCOMM Incorporated,Electronic Technology
+NOC,Northrop Grumman Corporation,Electronic Technology
+NTAP,"NetApp, Inc.",Electronic Technology
+HPQ,HP Inc.,Electronic Technology
+AMD,"Advanced Micro Devices, Inc.",Electronic Technology
+INTC,Intel Corporation,Electronic Technology
+BA,Boeing Company (The),Electronic Technology
+MU,"Micron Technology, Inc.",Electronic Technology
+EMR,Emerson Electric Company,Electronic Technology
+STX,Seagate Technology Holdings PLC,Electronic Technology
+WDC,Western Digital Corporation,Electronic Technology
+QRVO,"Qorvo, Inc.",Electronic Technology
+AMZN,"Amazon.com, Inc.",Retail Trade
+COST,Costco Wholesale Corporation,Retail Trade
+WMT,Walmart Inc.,Retail Trade
+CVS,CVS Health Corporation,Retail Trade
+KMX,CarMax Inc,Retail Trade
+TJX,"TJX Companies, Inc. (The)",Retail Trade
+ORLY,"O¡¯Reilly Automotive, Inc.",Retail Trade
+ROST,"Ross Stores, Inc.",Retail Trade
+DLTR,"Dollar Tree, Inc.",Retail Trade
+TSCO,Tractor Supply Company,Retail Trade
+LOW,"Lowe¡¯s Companies, Inc.",Retail Trade
+HD,"Home Depot, Inc. (The)",Retail Trade
+AZO,"AutoZone, Inc.",Retail Trade
+ULTA,"Ulta Beauty, Inc.",Retail Trade
+TGT,Target Corporation,Retail Trade
+EBAY,eBay Inc.,Retail Trade
+DG,Dollar General Corporation,Retail Trade
+KR,Kroger Company (The),Retail Trade
+BBY,"Best Buy Co., Inc.",Retail Trade
+BBWI,"Bath & Body Works, Inc.",Retail Trade
+AAP,Advance Auto Parts Inc.,Retail Trade
+TPR,"Tapestry, Inc.",Retail Trade
+CAH,"Cardinal Health, Inc.",Distribution Services
+BSX,Boston Scientific Corporation,Distribution Services
+FAST,Fastenal Company,Distribution Services
+POOL,Pool Corporation,Distribution Services
+HSIC,"Henry Schein, Inc.",Distribution Services
+COR,AmerisourceBergen Corporation,Distribution Services
+GWW,"W.W. Grainger, Inc.",Distribution Services
+GPC,Genuine Parts Company,Distribution Services
+MCK,McKesson Corporation,Distribution Services
+TSLA,"Tesla, Inc.",Consumer Durables
+SWK,"Stanley Black & Decker, Inc.",Consumer Durables
+SNA,Snap-On Incorporated,Consumer Durables
+LKQ,LKQ Corporation,Consumer Durables
+NVR,"NVR, Inc.",Consumer Durables
+F,Ford Motor Company,Consumer Durables
+DHI,"D.R. Horton, Inc.",Consumer Durables
+LEN,Lennar Corporation,Consumer Durables
+PHM,"PulteGroup, Inc.",Consumer Durables
+GM,General Motors Company,Consumer Durables
+HAS,"Hasbro, Inc.",Consumer Durables
+WHR,Whirlpool Corporation,Consumer Durables
+XYL,Xylem Inc.,Producer Manufacturing
+GNRC,Generac Holdings Inc.,Producer Manufacturing
+AOS,A.O. Smith Corporation,Producer Manufacturing
+ETN,"Eaton Corporation, PLC",Producer Manufacturing
+WAB,Westinghouse Air Brake Technologies Corporation,Producer Manufacturing
+APTV,Aptiv PLC,Producer Manufacturing
+AME,"AMETEK, Inc.",Producer Manufacturing
+IEX,IDEX Corporation,Producer Manufacturing
+NDSN,Nordson Corporation,Producer Manufacturing
+PH,Parker-Hannifin Corporation,Producer Manufacturing
+TT,Trane Technologies plc,Producer Manufacturing
+ITW,Illinois Tool Works Inc.,Producer Manufacturing
+PNR,Pentair plc.,Producer Manufacturing
+JCI,Johnson Controls International plc,Producer Manufacturing
+LRCX,Lam Research Corporation,Producer Manufacturing
+DOV,Dover Corporation,Producer Manufacturing
+AMAT,"Applied Materials, Inc.",Producer Manufacturing
+ALLE,Allegion plc,Producer Manufacturing
+CAT,"Caterpillar, Inc.",Producer Manufacturing
+MAS,Masco Corporation,Producer Manufacturing
+GE,General Electric Company,Producer Manufacturing
+CMI,Cummins Inc.,Producer Manufacturing
+PCAR,PACCAR Inc.,Producer Manufacturing
+DE,Deere & Company,Producer Manufacturing
+BWA,BorgWarner Inc.,Producer Manufacturing
+MMM,3M Company,Producer Manufacturing
+NWL,Newell Brands Inc.,Producer Manufacturing
+SPGI,S&P Global Inc.,Commercial Services
+EFX,"Equifax, Inc.",Commercial Services
+MCO,Moody¡¯s Corporation,Commercial Services
+GPN,Global Payments Inc.,Commercial Services
+MA,Mastercard Incorporated,Commercial Services
+CPRT,"Copart, Inc.",Commercial Services
+V,Visa Inc.,Commercial Services
+FLT,"FleetCor Technologies, Inc.",Commercial Services
+CRL,"Charles River Laboratories International, Inc.",Commercial Services
+RHI,Robert Half Inc.,Commercial Services
+IPG,"Interpublic Group of Companies, Inc. (The)",Commercial Services
+OMC,Omnicom Group Inc.,Commercial Services
+PWR,"Quanta Services, Inc.",Industrial Services
+BKR,Baker Hughes Company,Industrial Services
+RSG,"Republic Services, Inc.",Industrial Services
+WM,"Waste Management, Inc.",Industrial Services
+SLB,Schlumberger N.V.,Industrial Services
+WMB,"Williams Companies, Inc. (The)",Industrial Services
+KMI,"Kinder Morgan, Inc.",Industrial Services
+HAL,Halliburton Company,Industrial Services
+OKE,"ONEOK, Inc.",Industrial Services
+DUK,Duke Energy Corporation (Holding Company),Utilities
+FE,FirstEnergy Corp.,Utilities
+AWK,"American Water Works Company, Inc.",Utilities
+EIX,Edison International,Utilities
+PPL,PPL Corporation,Utilities
+CNP,"CenterPoint Energy, Inc (Holding Co)",Utilities
+SO,Southern Company (The),Utilities
+TRGP,"Targa Resources, Inc.",Utilities
+CMS,CMS Energy Corporation,Utilities
+PNW,Pinnacle West Capital Corporation,Utilities
+AEP,"American Electric Power Company, Inc.",Utilities
+WEC,"WEC Energy Group, Inc.",Utilities
+ATO,Atmos Energy Corporation,Utilities
+LNT,Alliant Energy Corporation,Utilities
+ES,Eversource Energy (D/B/A),Utilities
+AEE,Ameren Corporation,Utilities
+EXC,Exelon Corporation,Utilities
+XEL,Xcel Energy Inc.,Utilities
+NI,NiSource Inc,Utilities
+PCG,Pacific Gas & Electric Co.,Utilities
+D,"Dominion Energy, Inc.",Utilities
+SRE,DBA Sempra,Utilities
+EVRG,"Evergy, Inc.",Utilities
+NEE,"NextEra Energy, Inc.",Utilities
+DTE,DTE Energy Company,Utilities
+ETR,Entergy Corporation,Utilities
+ED,"Consolidated Edison, Inc.",Utilities
+PEG,Public Service Enterprise Group Incorporated,Utilities
+AES,The AES Corporation,Utilities
+NRG,"NRG Energy, Inc.",Utilities
+ECL,Ecolab Inc.,Process Industries
+LIN,Linde plc,Process Industries
+SHW,Sherwin-Williams Company (The),Process Industries
+APD,"Air Products and Chemicals, Inc.",Process Industries
+AVY,Avery Dennison Corporation,Process Industries
+PPG,"PPG Industries, Inc.",Process Industries
+BALL,Ball Corporation,Process Industries
+FMC,FMC Corporation,Process Industries
+PKG,Packaging Corporation of America,Process Industries
+LYB,LyondellBasell Industries NV,Process Industries
+EMN,Eastman Chemical Company,Process Industries
+AMCR,Amcor plc,Process Industries
+SEE,Sealed Air Corporation,Process Industries
+ADM,Archer-Daniels-Midland Company,Process Industries
+CE,Celanese Corporation,Process Industries
+BG,Bunge Limited Bunge Limited,Process Industries
+IP,International Paper Company,Process Industries
+DD,"DuPont de Nemours, Inc.",Process Industries
+CF,"CF Industries Holdings, Inc.",Process Industries
+MOS,Mosaic Company (The),Process Industries
+ALB,Albemarle Corporation,Process Industries
+VMC,Vulcan Materials Company (Holding Company),Non-Energy Minerals
+MLM,"Martin Marietta Materials, Inc.",Non-Energy Minerals
+FCX,"Freeport-McMoRan, Inc.",Non-Energy Minerals
+NUE,Nucor Corporation,Non-Energy Minerals
+STLD,"Steel Dynamics, Inc.",Non-Energy Minerals
+NEM,Newmont Corporation,Non-Energy Minerals
+MHK,"Mohawk Industries, Inc.",Non-Energy Minerals
+LUV,Southwest Airlines Company,Transportation
+ALK,"Alaska Air Group, Inc.",Transportation
+ODFL,"Old Dominion Freight Line, Inc.",Transportation
+JBHT,"J.B. Hunt Transport Services, Inc.",Transportation
+CHRW,"C.H. Robinson Worldwide, Inc.",Transportation
+SYY,Sysco Corporation,Transportation
+UNP,Union Pacific Corporation,Transportation
+NSC,Norfolk Southern Corporation,Transportation
+EXPD,"Expeditors International of Washington, Inc.",Transportation
+FDX,FedEx Corporation,Transportation
+CSX,CSX Corporation,Transportation
+UPS,"United Parcel Service, Inc.",Transportation
+DAL,"Delta Air Lines, Inc.",Transportation
+UAL,"United Airlines Holdings, Inc.",Transportation
+AAL,"American Airlines Group, Inc.",Transportation
+IQV,"IQVIA Holdings, Inc.",Health Services
+LH,Laboratory Corporation of America Holdings,Health Services
+UNH,UnitedHealth Group Incorporated,Health Services
+DVA,DaVita Inc.,Health Services
+MOH,Molina Healthcare Inc,Health Services
+DGX,Quest Diagnostics Incorporated,Health Services
+HUM,Humana Inc.,Health Services
+ELV,"Elevance Health, Inc.",Health Services
+UHS,"Universal Health Services, Inc.",Health Services
+HCA,"HCA Healthcare, Inc.",Health Services
+CNC,Centene Corporation,Health Services
+CI,The Cigna Group,Health Services
+HES,Hess Corporation,Energy Minerals
+COP,ConocoPhillips,Energy Minerals
+OXY,Occidental Petroleum Corporation,Energy Minerals
+CVX,Chevron Corporation,Energy Minerals
+PXD,Pioneer Natural Resources Company,Energy Minerals
+APA,APA Corporation,Energy Minerals
+EOG,"EOG Resources, Inc.",Energy Minerals
+XOM,Exxon Mobil Corporation,Energy Minerals
+MRO,Marathon Oil Corporation,Energy Minerals
+FANG,"Diamondback Energy, Inc.",Energy Minerals
+CTRA,Coterra Energy Inc.,Energy Minerals
+DVN,Devon Energy Corporation,Energy Minerals
+MPC,Marathon Petroleum Corporation,Energy Minerals
+PSX,Phillips 66,Energy Minerals
+EQT,EQT Corporation,Energy Minerals
+VLO,Valero Energy Corporation,Energy Minerals
+TMUS,"T-Mobile US, Inc.",Communications
+VZ,Verizon Communications Inc.,Communications
+T,AT&T Inc.,Communications
