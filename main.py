@@ -13,7 +13,7 @@ import torch.utils.data as Data
 from sklearn.metrics import mean_absolute_error
 from torch import optim
 from torch.utils.data import Dataset, DataLoader
-from model import CategoricalGraphAtt, MRR, Precision, Acc
+from model import CategoricalGraphAtt, MRR, Precision, IRR, Acc
 
 
 # class StockDataset(Dataset):
@@ -34,12 +34,12 @@ from model import CategoricalGraphAtt, MRR, Precision, Acc
 
 def train():
     # load data
-    data_path = './output/sp500_data.pkl'
+    data_path = './datasets/sp500_data.pkl'
     with open(data_path, "rb") as f:
         data = pickle.load(f)
 
-    inner_edge = np.array(np.load("/openbayes/input/input0/inner_edge.npy"))
-    outer_edge = np.array(np.load("/openbayes/input/input0/outer_edge.npy"))
+    inner_edge = np.array(np.load("./datasets/inner_edge.npy"))
+    outer_edge = np.array(np.load("./datasets/outer_edge.npy"))
 
     time_step = data["train"]["x1"][:, :, :, 1:].shape[-2]
     input_dim = data["train"]["x1"][:, :, :, 1:].shape[-1]
@@ -71,7 +71,13 @@ def train():
     loop_number = 100
     ks_list = [5, 10, 20]
 
-    global test_y
+    sp = pd.read_csv("./datasets/SP500_Companies.csv", encoding='ISO-8859-1')
+    sector_list = sp["Sector"].unique()
+    len_list = []
+    for sector in sector_list:
+        len_list.append(len(sp[sp["Sector"] == sector]))
+    len_array = np.array(len_list)
+
     l2 = 0.1
     lr = 0.1
     beta = 0.1
@@ -82,7 +88,7 @@ def train():
     hidden_dim = 64
     use_gru = False
 
-    model = CategoricalGraphAtt(input_dim, time_step, hidden_dim, inner_edge, outer_edge, agg_week_num, use_gru,device).to(device)
+    model = CategoricalGraphAtt(input_dim, time_step, hidden_dim, inner_edge, outer_edge, agg_week_num, len_array, use_gru,device).to(device)
 
     # initialize parameters
     for p in model.parameters():
@@ -185,6 +191,7 @@ def train():
     return best_metric_IRR, best_metric_MRR, best_results_IRR, best_results_MRR
 
 if __name__ == "__main__":
+    ks_list = [5, 10, 20]
     best_metric_IRR, best_metric_MRR, best_results_IRR, best_results_MRR = train()
     print("-------Final result-------")
     print("[BEST MRR] MAE:%.4f ACC:%.4f MRR:%.4f Precision:%.4f" % tuple(best_metric_MRR))

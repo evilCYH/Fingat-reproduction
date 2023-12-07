@@ -41,7 +41,7 @@ class SequenceEncoder(nn.Module):
 
 
 class CategoricalGraphAtt(nn.Module):
-    def __init__(self, input_dim, time_step, hidden_dim, inner_edge, outer_edge, input_num, use_gru, device):
+    def __init__(self, input_dim, time_step, hidden_dim, inner_edge, outer_edge, input_num, len_array, use_gru, device):
         super(CategoricalGraphAtt, self).__init__()
 
         # basic parameters
@@ -51,6 +51,7 @@ class CategoricalGraphAtt(nn.Module):
         self.inner_edge = inner_edge
         self.outer_edge = outer_edge
         self.input_num = input_num
+        self.len_array = len_array
         self.use_gru = use_gru
         self.device = device
 
@@ -95,10 +96,10 @@ class CategoricalGraphAtt(nn.Module):
         # pooling
         start_index = 0
         category_vectors_list = []
-        for i in range(len(len_array)):
-            end_index = start_index + len_array[i]
+        for i in range(len(self.len_array)):
+            end_index = start_index + self.len_array[i]
             sector_graph_embedding = inner_graph_embedding[start_index:end_index, :].unsqueeze(0)
-            pool_attention = AttentionBlock(len_array[i], self.dim).to(device)
+            pool_attention = AttentionBlock(self.len_array[i], self.dim).to(self.device)
             category_vectors, _ = pool_attention(sector_graph_embedding)  # ([1, 64])
             category_vectors_list.append(category_vectors)
             start_index = end_index
@@ -113,7 +114,7 @@ class CategoricalGraphAtt(nn.Module):
         intra_graph_embedding_list = []
         for i in range(category_vectors.size()[0]):
             gat_category_vectors = category_vectors[i:i + 1, :]
-            for j in range(len_array[i]):
+            for j in range(self.len_array[i]):
                 intra_graph_embedding_list.append(gat_category_vectors)
         intra_graph_embedding = torch.cat(intra_graph_embedding_list, dim=0)
         # print(f'intra_graph_embedding size = {intra_graph_embedding.size()}')   # torch.Size([475, 64])

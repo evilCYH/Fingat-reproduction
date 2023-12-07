@@ -5,11 +5,7 @@ import math
 import pickle
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 
-# the information of stocks(i.e. name & category of sector).
-SP500_name = pd.read_csv("./datasets4/arrange_sp500_companies.csv", encoding='ISO-8859-1')
-
-
-def stock_preprocess(csv_path, agg_week):
+def stock_preprocess(csv_path, stock_path, agg_week):
     # the information of stocks(i.e. name & category of sector).
     SP500_name = pd.read_csv(csv_path, encoding='ISO-8859-1')
 
@@ -18,7 +14,8 @@ def stock_preprocess(csv_path, agg_week):
     for target in SP500_name["Symbol"].unique():
         da = {}
         da["category"] = SP500_name[SP500_name.Symbol == target]["Sector"].iloc[0]
-        da["stock_price"] = pd.read_csv("./SP500_dataset/%s.csv" % (target), encoding='ISO-8859-1')
+        out_name = os.path.join(stock_path, target + ".csv")
+        da["stock_price"] = pd.read_csv(out_name, encoding='ISO-8859-1')
         SP500_stock[target] = da
 
     # Let all stocks has the same date.
@@ -242,10 +239,12 @@ def create_edge(data_path, csv_path):
 if __name__ == '__main__':
     DATA_DIR = ".\\datasets"
     SP500_LIST_PATH = ".\\datasets\\SP500_Companies.csv"
+    SP500_PATH = ".\\datasets\\SP500_datasets"
 
     print("\n==================== start preprocess data ====================")
-    data = stock_preprocess(csv_path=SP500_LIST_PATH, agg_week=4)
-    with open("./datasets4/sp500_data.pkl", "wb") as f:
+    data = stock_preprocess(csv_path=SP500_LIST_PATH, stock_path=SP500_PATH, agg_week=3)
+    pkl_name = os.path.join(DATA_DIR, "sp500_data.pkl")
+    with open(pkl_name, "wb") as f:
         pickle.dump(data, f)
     f.close()
 
